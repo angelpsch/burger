@@ -1,0 +1,41 @@
+<h1>Burgers</h1>
+
+<main class="wrapper">
+    <section id="undevoured">
+        <h2>Burgers that are not eaten!</h2>
+
+        <ul>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    {{> burger_block devoured=true}}
+                {{/unless}}
+            {{/each}}
+        </ul>
+    </section>
+
+    <section id="devoured">
+        <h2>Burgers that are eaten!</h2>
+
+        <ul>
+            {{#each burgers}}
+                {{#if devoured}}
+                    {{> burger_block devoured=false}}
+                {{/if}}
+            {{/each}}
+        </ul>
+    </section>
+</main>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="bn">Burger Name:</label>
+        <input type="text" id="bn" name="name">
+    </div>
+
+    <button type="submit" class="submitBtn">Add Burger</button>
+    <p>Enter the name of a burger you would like to eat, then click "Add Burger" to add it to your list.</p>
+</form>
+
+

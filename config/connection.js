@@ -1,25 +1,23 @@
-var mysql = require(`mysql`);
+
+var mysql = require('mysql');
+
+var connection;
+    connection = mysql.createConnection({
+        port: 3306,
+        host: 'qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+        user: 'hrblz1mdv12aahk8',
+        password: 'kupayy8kc2hcslxk',
+        database: 'putddvlat4bkzlmk'
+    })
 
 
-if (process.env.JAWSDB_URL) {
-  // JawsDB
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-var connection = mysql.createConnection({
-  host: `localhost`,
-  port: 3306,
-  user: `root`,
-  password: ``,
-  database: `burgers_db`
-});
-}
 
-connection.connect(function(err) {
+connection.connect(function (err) {
   if (err) {
-    console.error(`error connecting: ${err.stack}`);
+    console.error("error connecting: " + err.stack);
     return;
   }
-  console.log(`connected as id ${connection.threadId}`);
+  console.log("connected as id " + connection.threadId);
 });
 
 module.exports = connection;

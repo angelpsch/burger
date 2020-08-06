@@ -8,14 +8,7 @@ const orm = {
             cb(res);
         });
     },
-    updateOne: function (table, objColVals, condition, cb) {
-        const qString = `UPDATE ${table} SET devoured = ${objColVals} WHERE ${condition}`;
 
-        connection.query(qString, (err, res) => {
-            if (err) throw err;
-            cb(res);
-        })
-    },
     insertOne: function (table, cols, vals, cb) {
         const qString = `INSERT INTO ${table} (${cols.toString()}) VALUES (?)`;
 
@@ -23,9 +16,16 @@ const orm = {
             if (err) throw err;
             cb(res);
         });
+    },
+
+    updateOne: function (table, objColVals, condition, cb) {
+        const qString = `UPDATE ${table} SET devoured = ${objColVals} WHERE ${condition}`;
+
+        connection.query(qString, (err, res) => {
+            if (err) throw err;
+            cb(res);
+        })
     }
-
-
 }
 
 module.exports = orm;

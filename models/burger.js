@@ -1,22 +1,21 @@
-const orm = require(`../config/orm`);
-const { updateOne } = require(`../config/orm`);
 
+var orm = require("../config/orm.js");
 var burger = {
-    selectAll: function(cb) {
-        orm.selectAll(`burgers`, function(res) {
+    all: (cb) => {
+        orm.all("burgers", function (res) {
             cb(res);
         });
     },
-    updateOne: function(objColVals, condition, cb) {
-        orm.updateOne(`burgers`, objColVals, condition, function(res) {
+    update: (objColVals, condition, cb) => {
+        orm.update("burgers", objColVals, condition, function (res) {
             cb(res);
         });
     },
-    insertOne: function(cols, vals, cb) {
-        orm.insertOne(`burgers`, cols, vals, function(res) {
+    create: (cols, vals, cb) => {
+        orm.create("burgers", cols, vals, function (res) {
             cb(res);
         });
-    }
+    },
 }
 
 module.exports = burger;
