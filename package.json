@@ -4,7 +4,18 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "orm:help": "sequelize --help",
+    "orm:model:create": "sequelize model:generate --attributes placeholder:string --name",
+    "orm:seed:create": "sequelize seed:generate --name",
+    "orm:migration:create": "sequelize migration:generate --name",
+    "orm:migrate": "sequelize db:migrate",
+    "orm:migrate:reset": "sequelize db:migrate:undo:all && npm run orm:migrate",
+    "orm:seed": "sequelize db:seed:all",
+    "precommit": "lint-staged",
+    "pretest": "cross-env NODE_ENV=test npm run orm:migrate:reset"
   },
   "repository": {
     "type": "git",
@@ -19,6 +30,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
-    "mysql": "^2.18.1"
+    "handlebars": "^4.7.6",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.3.4"
   }
 }
